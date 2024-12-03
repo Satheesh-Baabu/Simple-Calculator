@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Calculator</h1>
+        <input type="text" id="input" onkeypress="keyboardkey(event)">
+        
+        <div id="button">
+            <button class="btn" onclick="dclear()">C</button>
+            <button class="btn" onclick="sclear()">DEL</button>
+            <button class="btn" onclick="displaybox('/')">/</button>
+            <button class="btn" onclick="displaybox('*')">*</button>
+        </div>
+        <div id="button">
+            <button class="btn" onclick="displaybox(7)">7</button>
+            <button class="btn" onclick="displaybox(8)">8</button>
+            <button class="btn" onclick="displaybox(9)">9</button>
+            <button class="btn" onclick="displaybox('-')">-</button>
+        </div>
+        <div id="button">
+            <button class="btn" onclick="displaybox(4)">4</button>
+            <button class="btn" onclick="displaybox(5)">5</button>
+            <button class="btn" onclick="displaybox(6)">6</button>
+            <button class="btn" onclick="displaybox('+')">+</button>
+        </div>
+        <div id="button">
+            <button class="btn" onclick="displaybox(1)">1</button>
+            <button class="btn" onclick="displaybox(2)">2</button>
+            <button class="btn" onclick="displaybox(3)">3</button>
+            <button class="btn" onclick="displaybox('%')">%</button>
+        </div>
+        <div id="button">
+            <button class="btn" onclick="dclear()">CE</button>
+            <button class="btn" onclick="displaybox(0)">0   </button>
+            <button class="btn" onclick="displaybox('.')">.</button>
+            <button class="btn" onclick="equalto()">=</button>
+        </div>
+    </div>
+</body>
+<script>
+    function displaybox(v)
+    {
+        document.getElementById('input').value=document.getElementById('input').value + v;
+
+    }
+    function dclear()
+    {
+        document.getElementById('input').value="";
+    }
+    function sclear()
+    {
+        var temp=document.getElementById('input').value;
+        var len=temp.length;
+        temp=temp.replace(temp[len-1],"");
+        document.getElementById('input').value = temp;
+    }
+    function equalto()
+    {
+        var input=document.getElementById('input').value;
+        var res=eval(input);    
+        document.getElementById('input').value=res;
+    }
+    function keyboardkey(event)
+    {
+        if(event.keyCode==13)
+        {
+            equalto();     
+        }
+        if(event.keyCode==8)
+        {
+            sclear();
+        }
+    }
+</script>
+</html>
